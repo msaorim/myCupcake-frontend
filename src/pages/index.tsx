@@ -1,4 +1,4 @@
-import { useContext, FormEvent } from 'react'
+import { useContext, FormEvent, useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import logoImg from '../../public/logo_new.svg'
@@ -9,14 +9,17 @@ import Link from 'next/link'
 import { AuthContext } from '../contexts/AuthContext'
 
 export default function Home() {
-  const { signIn } = useContext(AuthContext)
+  const { signIn } = useContext(AuthContext);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
   async function hlogin(event: FormEvent) {
     event.preventDefault();
 
     let data = {
-      email: "meuemail@teste",
-      password: "123"
+      email,
+      password
     }
 
     await signIn(data);
@@ -34,11 +37,15 @@ export default function Home() {
             <Input
               placeholder='Digite seu Email'
               type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
 
             <Input
               placeholder='Digite sua Senha'
               type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
 
             <Button type="submit" loading={false}>
