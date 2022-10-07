@@ -4,6 +4,7 @@ import logoImg from '../../public/logo_new.svg'
 import styles from '../../styles/home.module.scss'
 import { Button } from '../components/ui/Button'
 import { Input } from '../components/ui/Input'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -11,26 +12,27 @@ export default function Home() {
       <Head>
         <title>myCupcake - Faça seu login</title>
       </Head>
-
       <div className={styles.containerCenter}>
         <Image src={logoImg} alt="logo nyCupcake" />
-        <div>
+        <div className={styles.login}>
           <form>
             <Input
               placeholder='Digite seu Email'
               type="text"
             />
 
-            {/* <Input
+            <Input
               placeholder='Digite sua Senha'
               type="password"
-            /> */}
+            />
 
             <Button type="submit" loading={false}>
               Acessar
             </Button>
           </form>
-          <a className={styles.text}>Não tem conta? - Cadastre-se</a>
+          <Link href='/signup'>
+            <a className={styles.text}>Não tem conta? - <span className={styles.cadastrologin}>Cadastre-se</span></a>
+          </Link>
         </div>
       </div>
       <footer className={styles.assinatura}>
