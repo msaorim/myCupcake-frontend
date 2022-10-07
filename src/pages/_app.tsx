@@ -7,3 +7,10 @@ function MyApp({ Component, pageProps }: AppProps) {
 }
 
 export default MyApp
+
+
+// Marcelo Rocha Saorim
+// Engenharia de Software
+// PIT II
+// 2o Semestre 2022
+// RGM 22800565
