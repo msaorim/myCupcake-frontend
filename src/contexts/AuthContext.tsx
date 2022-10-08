@@ -1,6 +1,7 @@
 import { createContext, ReactNode, useState } from 'react'
-import { destroyCookie } from 'nookies'
+import { destroyCookie, setCookie, parseCookies } from 'nookies'
 import Router from 'next/router'
+import { api } from '../services/apiClient'
 
 
 //==Contexto=============================================================================
@@ -43,8 +44,35 @@ export function AuthProvider({ children }: AuthProviderProps) {
     const [user, setUser] = useState<UserProps>();
     const isAuthenticated = !!user;
 
+    //==Login============================================================================
     async function signIn({ email, password }: SignInProps) {
-        alert(`Email: ${email} \nSenha: ${password}`);
+        try {
+            const response = await api.post('/login', {
+                email,
+                password
+            })
+            //console.log(response.data);
+            const { id, name, token } = response.data;
+            //setCookie(undefined, "@myCupcake.token", response.data.token);
+            setCookie(undefined, "@myCupcake.token", token, {
+                maxAge: 60 * 60 * 24 * 30,
+                path: '/'
+            })
+
+            setUser({
+                id,
+                name,
+                email
+            })
+
+            // passar o token para próximas requisições
+            api.defaults.headers['Authorization'] = `Bearer ${token}`;
+
+            // redirecionar para o menu
+            Router.push('/menu')
+        } catch (err) {
+
+        }
     }
 
     return (
