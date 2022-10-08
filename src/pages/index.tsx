@@ -17,12 +17,21 @@ export default function Home() {
   async function hlogin(event: FormEvent) {
     event.preventDefault();
 
+    if (email === "" || password === "") {
+      alert("Preencher os campos email e senha!");
+      return;
+    }
+
+    setLoading(true);
+
     let data = {
       email,
       password
     }
 
     await signIn(data);
+
+    setLoading(false);
   }
 
   return (
@@ -31,7 +40,7 @@ export default function Home() {
         <title>myCupcake - Faça seu login</title>
       </Head>
       <div className={styles.containerCenter}>
-        <Image src={logoImg} alt="logo nyCupcake" />
+        <Image src={logoImg} alt="logo myCupcake" />
         <div className={styles.login}>
           <form onSubmit={hlogin}>
             <Input
@@ -48,7 +57,7 @@ export default function Home() {
               onChange={(e) => setPassword(e.target.value)}
             />
 
-            <Button type="submit" loading={false}>
+            <Button type="submit" loading={loading}>
               Acessar
             </Button>
           </form>
