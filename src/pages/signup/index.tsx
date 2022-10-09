@@ -1,4 +1,5 @@
 import { useState, FormEvent, useContext } from 'react'
+import { toast } from 'react-toastify'
 import Head from 'next/head'
 import Image from 'next/image'
 import logoImg from '../../../public/new_logo_medio.svg'
@@ -21,7 +22,7 @@ export default function SignUp() {
         event.preventDefault();
 
         if (name === "" || email === "" || password === "") {
-            alert("Favor preencher todos os campos!");
+            toast.warning('Preencher todos os campos!');
             return;
         }
 

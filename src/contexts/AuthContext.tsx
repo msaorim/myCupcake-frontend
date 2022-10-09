@@ -2,6 +2,7 @@ import { createContext, ReactNode, useState } from 'react'
 import { destroyCookie, setCookie, parseCookies } from 'nookies'
 import Router from 'next/router'
 import { api } from '../services/apiClient'
+import { toast } from 'react-toastify'
 
 
 //==Contexto=============================================================================
@@ -32,7 +33,7 @@ export function signOut() {
         destroyCookie(undefined, '@myCupcake.token');
         Router.push('/');
     } catch (err) {
-        console.log(`Erro: ${err} ao deslogar!`)
+        toast.error(`Erro: ${err} ao deslogar!`)
     }
 }
 
@@ -68,11 +69,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
             // passar o token para próximas requisições
             api.defaults.headers['Authorization'] = `Bearer ${token}`;
-
+            toast.success(name + ', seja Bem vindo(a).');
             // redirecionar para o menu
             Router.push('/menu')
         } catch (err) {
-
+            toast.error('Usuário e/ou senha inválido(s)');
         }
     }
 
@@ -90,10 +91,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
                 email,
                 password
             });
-            alert(`Usuário: ${name}, cadastrado com sucesso.`);
+            toast.success(`Usuário: ${name}, cadastrado com sucesso.`);
             Router.push('/');
         } catch (err) {
-            console.log(`Erro: ${err}], ao cadastrar`);
+            toast.error(`Erro: ${err}], ao cadastrar`);
         }
     }
 
