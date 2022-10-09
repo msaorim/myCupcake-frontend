@@ -9,7 +9,8 @@ type AuthContextData = {
     user: UserProps,
     isAuthenticated: boolean,
     signIn: (credentials: SignInProps) => Promise<void>,
-    signOut: () => void
+    signOut: () => void,
+    signUp: (credentials: SignInProps) => Promise<void>
 }
 
 type UserProps = {
@@ -75,9 +76,39 @@ export function AuthProvider({ children }: AuthProviderProps) {
         }
     }
 
+    //==Cadastro=========================================================================
+    type SignUpProps = {
+        name: string,
+        email: string,
+        password: string
+    }
+
+    async function signUp({ name, email, password }: SignUpProps) {
+        try {
+            const response = await api.post('/user', {
+                name,
+                email,
+                password
+            });
+            alert(`Usuário: ${name}, cadastrado com sucesso.`);
+            Router.push('/');
+        } catch (err) {
+            console.log(`Erro: ${err}], ao cadastrar`);
+        }
+    }
+
+
+
+    //===================================================================================
     return (
-        <AuthContext.Provider value={{ user, isAuthenticated, signIn, signOut }}>
+        <AuthContext.Provider value={{ user, isAuthenticated, signIn, signOut, signUp }}>
             {children}
         </AuthContext.Provider>
     )
 }
+
+// Marcelo Rocha Saorim
+// Engenharia de Software
+// PIT II
+// 2o Semestre 2022
+// RGM 22800565
