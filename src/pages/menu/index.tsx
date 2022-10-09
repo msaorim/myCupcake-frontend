@@ -1,3 +1,5 @@
+import { canSSRAuth } from "../../utils/canSSRAuth"
+
 export default function Menu() {
     return (
         <>
@@ -5,3 +7,10 @@ export default function Menu() {
         </>
     )
 }
+
+
+export const getServerSideProps = canSSRAuth(async (ctx) => {
+    return {
+        props: {}
+    }
+})
