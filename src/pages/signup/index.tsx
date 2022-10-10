@@ -46,7 +46,7 @@ export default function SignUp() {
 
             <div className={styles.containerCenter}>
                 <Image src={logoImg} alt="logo nyCupcake" />
-                <h1>Cadastro</h1>
+                <h1 className={styles.titulo}>Cadastro</h1>
                 <div className={styles.login}>
                     <form onSubmit={hSignUp}>
                         <Input

@@ -9,7 +9,7 @@ export default function Menu() {
                 <title>Menu myCupcake</title>
             </Head>
             <div>
-                <Header />
+                <Header></Header>
                 <h1>Menu</h1>
 
             </div>

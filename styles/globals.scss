@@ -18,6 +18,10 @@
   --letra-botao: #23218B;
 }
 
+h1 {
+  color: var(--fundo-botao);
+}
+
 button {
   cursor: pointer;
 }
@@ -48,5 +52,11 @@ button {
 @media (max-width: 1080px) {
   html {
     font-size: 93.75%;
+  }
+}
+
+@media (max-width: 300px) {
+  html {
+    font-size: 50.75%;
   }
 }

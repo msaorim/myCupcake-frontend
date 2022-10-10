@@ -116,7 +116,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
             toast.success(`Usuário: ${name}, cadastrado com sucesso.`);
             Router.push('/');
         } catch (err) {
-            toast.error(`Erro: ${err}], ao cadastrar`);
+            toast.error(`Erro ao fazer o cadastro`);
         }
     }
 

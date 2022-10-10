@@ -5,30 +5,34 @@ import { FiLogOut } from 'react-icons/fi'
 import styles from './styles.module.scss'
 import ImgLogo from '../../../public/logo_menor.svg'
 import { AuthContext } from '../../contexts/AuthContext'
+
+
 export function Header() {
     const { signOut, user } = useContext(AuthContext);
     return (
-        <header className={styles.headerContainer}>
-            <div className={styles.headerContent}>
-                <Link href="/menu">
-                    <Image src={ImgLogo} alt='logo myCupcakeas' width={150}></Image>
-                </Link>
-                <h3>{user?.name}</h3>
-                <nav className={styles.menu_nav}>
-                    <Link href={"/menu"}>
-                        <a>Categoria</a>
+        <>
+            <header className={styles.headerContainer}>
+                <div className={styles.headerContent}>
+                    <Link href="/menu">
+                        <Image src={ImgLogo} alt='logo myCupcakeas' width={150}></Image>
                     </Link>
+                    <nav className={styles.menu_nav}>
+                        <Link href={"/category"}>
+                            <a>Produtos</a>
+                        </Link>
 
-                    <Link href={"/menu"}>
-                        <a>Cardápio</a>
-                    </Link>
+                        <Link href={"/menu"}>
+                            <a>Menu</a>
+                        </Link>
 
-                    <button onClick={signOut}>
-                        <FiLogOut color="#FFF" size={20} />
-                    </button>
-                </nav>
-            </div>
-        </header>
+                        <button onClick={signOut}>
+                            <FiLogOut color="#FFF" size={20} />
+                        </button>
+                    </nav>
+                </div>
+                {/* <h3>{user?.name}</h3> */}
+            </header>
+        </>
     )
 }
 

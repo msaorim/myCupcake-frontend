@@ -1,5 +1,5 @@
 .containerCenter {
-    min-height: 100vh;
+    min-height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,6 +51,10 @@
     margin-top: 1rem;
     font-size: 0.7rem;
     font-style: italic;
+}
+
+.titulo {
+    color: var(--fundo-botao);
 }
 
 @media (max-width: 350px) {
