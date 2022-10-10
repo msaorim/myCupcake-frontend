@@ -1,9 +1,18 @@
+import Head from "next/head"
+import { Header } from '../../components/Header'
 import { canSSRAuth } from "../../utils/canSSRAuth"
 
 export default function Menu() {
     return (
         <>
-            <h1>Menu</h1>
+            <Head>
+                <title>Menu myCupcake</title>
+            </Head>
+            <div>
+                <Header />
+                <h1>Menu</h1>
+
+            </div>
         </>
     )
 }
@@ -14,3 +23,10 @@ export const getServerSideProps = canSSRAuth(async (ctx) => {
         props: {}
     }
 })
+
+
+// Marcelo Rocha Saorim
+// Engenharia de Software
+// PIT II
+// 2o Semestre 2022
+// RGM 22800565

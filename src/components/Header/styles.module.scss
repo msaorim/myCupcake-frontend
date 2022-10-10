@@ -1,0 +1,53 @@
+.headerContainer {
+    height: 5rem;
+}
+
+.headerContent {
+    max-width: 900px;
+    height: 5rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    img {
+        cursor: pointer;
+    }
+
+    h3 {
+        color: var(--fundo-botao);
+    }
+}
+
+.menu_nav {
+    display: flex;
+    align-items: center;
+
+    a {
+        color: var(--white);
+        padding: 0 0.5rem;
+        display: inline-block;
+        position: relative;
+        transition: color 0.8s;
+
+        &+a {
+            margin-left: 0.5rem;
+        }
+
+        &:hover {
+            color: var(--fundo-botao);
+        }
+    }
+
+    button {
+        margin-left: 0.5rem;
+        background: transparent;
+        border: none;
+        transition: transform 0.5s;
+
+        &:hover {
+            transform: scale(1.5);
+        }
+    }
+}

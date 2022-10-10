@@ -58,14 +58,14 @@ export function AuthProvider({ children }: AuthProviderProps) {
                     name,
                     email
                 })
-                toast.info(`Nome: ${name}`);
+                //toast.info(`Nome: ${name}`);
             }).catch(() => {
                 toast.info('Erro no token');
                 signOut();
             })
         } else {
         }
-        toast.info(`Token: ${token}`);
+        //toast.info(`Token: ${token}`);
     }, [])
 
     //==Login============================================================================
