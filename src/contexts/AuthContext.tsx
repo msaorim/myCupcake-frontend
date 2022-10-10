@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from 'react'
+import { createContext, ReactNode, useState, useEffect } from 'react'
 import { destroyCookie, setCookie, parseCookies } from 'nookies'
 import Router from 'next/router'
 import { api } from '../services/apiClient'
@@ -45,6 +45,28 @@ type AuthProviderProps = {
 export function AuthProvider({ children }: AuthProviderProps) {
     const [user, setUser] = useState<UserProps>();
     const isAuthenticated = !!user;
+
+    useEffect(() => {
+        //alert('useEffect');
+        const { "@myCupcake.token": token } = parseCookies();
+
+        if (token) {
+            api.get('/detail').then(response => {
+                const { id, name, email } = response.data;
+                setUser({
+                    id,
+                    name,
+                    email
+                })
+                toast.info(`Nome: ${name}`);
+            }).catch(() => {
+                toast.info('Erro no token');
+                signOut();
+            })
+        } else {
+        }
+        toast.info(`Token: ${token}`);
+    }, [])
 
     //==Login============================================================================
     async function signIn({ email, password }: SignInProps) {
