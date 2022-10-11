@@ -17,7 +17,7 @@ export function Header() {
                         <Image src={ImgLogo} alt='logo myCupcakeas' width={150}></Image>
                     </Link>
                     <nav className={styles.menu_nav}>
-                        <Link href={"/category"}>
+                        <Link href={"/product"}>
                             <a>Produtos</a>
                         </Link>
 
