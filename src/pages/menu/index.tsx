@@ -1,7 +1,7 @@
 import Head from "next/head"
 import { Header } from '../../components/Header'
 import { canSSRAuth } from "../../utils/canSSRAuth"
-
+import styles from './styles.module.scss'
 export default function Menu() {
     return (
         <>
@@ -11,6 +11,13 @@ export default function Menu() {
             <div>
                 <Header></Header>
                 <h1>Menu</h1>
+                <select name="" id="">
+                    <option value="">
+                        categoria
+                    </option>
+                </select>
+            </div>
+            <div className={styles.card}>
 
             </div>
         </>

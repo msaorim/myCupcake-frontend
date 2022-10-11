@@ -17,12 +17,12 @@ export function Header() {
                         <Image src={ImgLogo} alt='logo myCupcakeas' width={150}></Image>
                     </Link>
                     <nav className={styles.menu_nav}>
-                        <Link href={"/product"}>
-                            <a>Produtos</a>
+                        <Link href={"/category"}>
+                            <a>Categorias</a>
                         </Link>
 
-                        <Link href={"/menu"}>
-                            <a>Menu</a>
+                        <Link href={"/product"}>
+                            <a>Produtos</a>
                         </Link>
 
                         <button onClick={signOut}>

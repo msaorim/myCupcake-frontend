@@ -36,7 +36,7 @@ export default function Category() {
                 <Header></Header>
             </div>
             <main className={styles.container}>
-                <h1>Cadastrar Categoria</h1>
+                <h1>Nova Categoria</h1>
 
                 <form className={styles.form} onSubmit={hRegister}>
                     <input className={styles.input}
