@@ -5,11 +5,26 @@ import { FiUpload } from 'react-icons/fi'
 import { Header } from "../../components/Header"
 import { canSSRAuth } from "../../utils/canSSRAuth"
 import styles from './styles.module.scss'
+import { setupAPIClient } from '../../services/api'
+import { toast } from 'react-toastify'
 
-export default function Product() {
+type CategoryItemsProps = {
+    id: string,
+    name: string
+}
+
+interface CategoryProps {
+    categoryList: CategoryItemsProps[]
+}
+
+export default function Product({ categoryList }: CategoryProps) {
 
     const [avatarUrl, setAvatarUrl] = useState('');
     const [imageAvatar, setImageAvatar] = useState(null);
+    const [categories, setCategories] = useState(categoryList || []);
+    const [categorySelected, setCategorySelected] = useState(0);
+
+    //console.log(categoryList);
 
     function hFile(e: ChangeEvent<HTMLInputElement>) {
         if (!e.target.files) {
@@ -23,6 +38,12 @@ export default function Product() {
             setImageAvatar(image);
             setAvatarUrl(URL.createObjectURL(e.target.files[0]));
         }
+    }
+
+    function hChangeCategory(e) {
+        //toast.info(`Indice da Categoria selecionada: ${e.target.value}`);
+        //console.log(categories[e.target.value].name);
+        setCategorySelected(e.target.value);
     }
 
     return (
@@ -60,16 +81,18 @@ export default function Product() {
                         </label>
 
 
-                        <select className={styles.select}>
-                            <option>
-                                Cupcake
-                            </option>
-                            <option>
-                                Bebida
-                            </option>
-                            <option>
-                                Sobremesa
-                            </option>
+                        <select
+                            className={styles.select}
+                            value={categorySelected}
+                            onChange={hChangeCategory}
+                        >
+                            {categories.map((item, index) => {
+                                return (
+                                    <option key={item.id} value={index}>
+                                        {item.name}
+                                    </option>
+                                )
+                            })}
                         </select>
 
                         <input className={styles.input}
@@ -100,7 +123,12 @@ export default function Product() {
 
 
 export const getServerSideProps = canSSRAuth(async (ctx) => {
+    const apiClient = setupAPIClient(ctx);
+    const response = await apiClient.get('/categories')
+
     return {
-        props: {}
+        props: {
+            categoryList: response.data
+        }
     }
 })
