@@ -9,8 +9,8 @@ export function setupAPIClient(ctx = undefined) {
 
     const api = axios.create({
         //baseURL: 'http://localhost:3300',
-        baseURL: 'http://192.168.0.164:3300',
-        //baseURL: 'https://my-cupcake.herokuapp.com',
+        //baseURL: 'http://192.168.0.164:3300',
+        baseURL: 'https://my-cupcake.herokuapp.com',
         headers: {
             Authorization: `Bearer ${cookies['@myCupcake.token']}`
         }
