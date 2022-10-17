@@ -5,7 +5,7 @@ export function Card(props) {
     return (
         <div className={styles.card}>
             <div className={styles.card_image}>
-                <img src={props.image} alt="imagem" />
+                <img className={styles.imagem} src={props.image} alt="imagem" />
             </div>
             <div className={styles.card_name}>
                 {props.name}

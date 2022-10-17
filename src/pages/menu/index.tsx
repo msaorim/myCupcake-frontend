@@ -5,7 +5,6 @@ import { canSSRAuth } from "../../utils/canSSRAuth"
 import styles from './styles.module.scss'
 import { Card } from '../../components/Card'
 import { setupAPIClient } from '../../services/api'
-import { Value } from 'sass'
 
 
 type ProductItemsProps = {

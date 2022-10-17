@@ -7,6 +7,7 @@ import { canSSRAuth } from "../../utils/canSSRAuth"
 import { FiUpload } from 'react-icons/fi'
 import { setupAPIClient } from '../../services/api'
 import { toast } from 'react-toastify'
+import Router from 'next/router'
 
 type CategoryItemsProps = {
     id: string,
@@ -69,6 +70,7 @@ export default function Product({ categoryList }: CategoryProps) {
             const apiClient = setupAPIClient();
             await apiClient.post('/product', data);
             toast.success("Produto cadastrado com sucesso.");
+            Router.push('/menu');
         } catch (err) {
             toast.error("Erro ao cadastrar o produto!");
         }
