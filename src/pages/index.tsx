@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import logoImg from '../../public/logo_new.svg'
-import styles from '../../styles/home.module.scss'
+import styles from './home.module.scss'
 import { Button } from '../components/ui/Button'
 import { Input } from '../components/ui/Input'
 import { AuthContext } from '../contexts/AuthContext'
