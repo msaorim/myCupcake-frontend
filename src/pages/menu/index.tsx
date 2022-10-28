@@ -35,6 +35,10 @@ export default function Menu({ productList }: ProductsProps) {
 
             <div className={styles.titulo}>
                 <h1>Menu</h1>
+                <h3 className={styles.texto_atencao}>Atenção! Versão de Estudo!!!</h3>
+                <h3 className={styles.texto_atencao}>Devido as imagens estarem no Heroku.</h3>
+                <h3 className={styles.texto_atencao}>Elas estarão disponíveis somente por alguns minutos.</h3>
+                <h3 className={styles.texto_atencao}>Obrigado.</h3>
             </div>
             <div className={styles.card}>
 
