@@ -37,9 +37,8 @@ export default function Menu({ productList }: ProductsProps) {
                 <h1>Menu</h1>
                 <h3 className={styles.texto_atencao}>Atenção! Versão de Estudo!!!</h3>
                 <h3 className={styles.texto_atencao}>Devido as imagens estarem no Heroku.</h3>
-                <h3 className={styles.texto_atencao}>Elas estarão disponíveis somente por alguns minutos.</h3>
-                <h3 className={styles.texto_atencao}>Enquanto o Banco de dados estiver ativo.</h3>
-                <h3 className={styles.texto_atencao}>Obrigado.</h3>
+                <h3 className={styles.texto_atencao}>Elas são removidas após 30 minutos</h3>
+                <h3 className={styles.texto_atencao}>de inatividade. Obrigado.</h3>
             </div>
             <div className={styles.card}>
 
