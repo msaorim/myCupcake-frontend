@@ -8,6 +8,7 @@ import { FiUpload } from 'react-icons/fi'
 import { setupAPIClient } from '../../services/api'
 import { toast } from 'react-toastify'
 import Router from 'next/router'
+import { Button } from '../../components/ui/Button'
 
 type CategoryItemsProps = {
     id: string,
@@ -28,7 +29,7 @@ export default function Product({ categoryList }: CategoryProps) {
 
     const [categories, setCategories] = useState(categoryList || []);
     const [categorySelected, setCategorySelected] = useState(0);
-
+    const [loading, setLoading] = useState(false);
 
     //console.log(categoryList);
 
@@ -67,8 +68,10 @@ export default function Product({ categoryList }: CategoryProps) {
             data.append('category_id', categories[categorySelected].id);
             data.append('file', imageAvatar);
 
+            setLoading(true);
             const apiClient = setupAPIClient();
             await apiClient.post('/product', data);
+            setLoading(false);
             toast.success("Produto cadastrado com sucesso.");
             Router.push('/menu');
         } catch (err) {
@@ -141,7 +144,7 @@ export default function Product({ categoryList }: CategoryProps) {
                         />
 
                         <input className={styles.input}
-                            type="text"
+                            type="number"
                             placeholder="Preço do produto"
                             value={price}
                             onChange={(e) => setPrice(e.target.value)}
@@ -154,12 +157,10 @@ export default function Product({ categoryList }: CategoryProps) {
                         >
                         </textarea>
 
-                        <button className={styles.button_add} type="submit">
+                        <Button type="submit" loading={loading}>
                             Cadastrar
-                        </button>
+                        </Button>
                     </form>
-
-
                 </main>
             </div>
         </>
@@ -177,3 +178,7 @@ export const getServerSideProps = canSSRAuth(async (ctx) => {
         }
     }
 })
+
+{/* <button className={styles.button_add} type="submit">
+     Cadastrar
+</button> */}

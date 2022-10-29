@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import Head from "next/head"
+import Image from 'next/image'
+import Img01 from '../../public/brigadeiro.jpg'
 import { Header } from '../../components/Header'
 import { canSSRAuth } from "../../utils/canSSRAuth"
 import styles from './styles.module.scss'
@@ -35,12 +37,34 @@ export default function Menu({ productList }: ProductsProps) {
 
             <div className={styles.titulo}>
                 <h1>Menu</h1>
-                <h3 className={styles.texto_atencao}>Atenção! Versão de Estudo!!!</h3>
-                <h3 className={styles.texto_atencao}>Devido as imagens estarem no Heroku.</h3>
-                <h3 className={styles.texto_atencao}>Elas são removidas após 30 minutos</h3>
-                <h3 className={styles.texto_atencao}>de inatividade. Obrigado.</h3>
+
             </div>
             <div className={styles.card}>
+                <Card image={'brigadeiro.jpg'}
+                    name={"Brigadeiro"}
+                    description={"Cupcake de Brigadeiro com chocolate belga"}
+                    price={'12.00'}
+                ></Card>
+                <Card image={'doce_de_leite.jpg'}
+                    name={"Doce de Leite"}
+                    description={"Cupcake de Brigadeiro com chocolate belga"}
+                    price={'11.50'}
+                ></Card>
+                <Card image={'leite_ninho.jpg'}
+                    name={"Leite Ninho"}
+                    description={"Cupcake de Brigadeiro com chocolate belga"}
+                    price={'11.00'}
+                ></Card>
+                <Card image={'limão.jpg'}
+                    name={"Limão"}
+                    description={"Cupcake de Brigadeiro com chocolate belga"}
+                    price={'10.00'}
+                ></Card>
+                <Card image={'suco_uva_lata.jpg'}
+                    name={"Brigadeiro"}
+                    description={"Cupcake de Brigadeiro com chocolate belga"}
+                    price={'12.00'}
+                ></Card>
 
                 {products.map((item) => (
 
@@ -55,6 +79,12 @@ export default function Menu({ productList }: ProductsProps) {
                 ))}
 
             </div>
+            <footer className={styles.rodape}>
+                <h3>Atenção! Versão de Estudo!!!</h3>
+                <h3>Imagens novas serão gravadas no Heroku.</h3>
+                <h3>E após 30 minutos de inatividade, serão removidas</h3>
+                <h3>do Heroku, devido ao plano gratuíto. Obrigado.</h3>
+            </footer>
         </>
     )
 }

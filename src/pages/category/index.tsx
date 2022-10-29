@@ -5,10 +5,12 @@ import { setupAPIClient } from '../../services/api'
 import { Header } from '../../components/Header'
 import { canSSRAuth } from '../../utils/canSSRAuth'
 import styles from './styles.module.scss'
+import { Button } from '../../components/ui/Button';
 
 export default function Category() {
 
     const [name, setName] = useState('');
+    const [loading, setLoading] = useState(false);
 
     async function hRegister(event: FormEvent) {
         event.preventDefault();
@@ -19,10 +21,11 @@ export default function Category() {
         }
 
         const apiClient = setupAPIClient();
+        setLoading(true);
         await apiClient.post('/category', {
             name: name
         })
-
+        setLoading(false);
         toast.success(`Categoria: ${name}, cadastrada com sucesso!`);
         setName('');
     }
@@ -45,9 +48,9 @@ export default function Category() {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                     />
-                    <button className={styles.buttonAdd} type="submit">
+                    <Button type="submit" loading={loading}>
                         Cadastrar
-                    </button>
+                    </Button>
                 </form>
             </main>
         </>
