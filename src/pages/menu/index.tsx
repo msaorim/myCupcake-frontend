@@ -47,22 +47,22 @@ export default function Menu({ productList }: ProductsProps) {
                 ></Card>
                 <Card image={'doce_de_leite.jpg'}
                     name={"Doce de Leite"}
-                    description={"Cupcake de Brigadeiro com chocolate belga"}
+                    description={"Cupcake de Doce de Leite"}
                     price={'11.50'}
                 ></Card>
                 <Card image={'leite_ninho.jpg'}
                     name={"Leite Ninho"}
-                    description={"Cupcake de Brigadeiro com chocolate belga"}
+                    description={"Cupcake de Leite Ninho"}
                     price={'11.00'}
                 ></Card>
                 <Card image={'limão.jpg'}
                     name={"Limão"}
-                    description={"Cupcake de Brigadeiro com chocolate belga"}
+                    description={"Cupcake de Creme de Limão"}
                     price={'10.00'}
                 ></Card>
                 <Card image={'suco_uva_lata.jpg'}
-                    name={"Brigadeiro"}
-                    description={"Cupcake de Brigadeiro com chocolate belga"}
+                    name={"Suco de Uva"}
+                    description={"Suco de Uva lata"}
                     price={'12.00'}
                 ></Card>
 
